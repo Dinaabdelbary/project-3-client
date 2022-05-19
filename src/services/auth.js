@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 const signup = (name, email, password) => {
-    return axios.post('/api/auth/signup', { name, email, password });
+    return axios.post('https://musicthingy.herokuapp.com/api/auth/signup', { name, email, password });
 };
 
 const login = (email, password) => {
     return axios
-        .post('/api/auth/login', { email, password })
+        .post('https://musicthingy.herokuapp.com/api/auth/login', { email, password })
         .then(response => {
             return response.data;
         })
@@ -17,7 +17,7 @@ const login = (email, password) => {
 
 const logout = () => {
     return axios
-        .delete('/api/auth/logout')
+        .delete('https://musicthingy.herokuapp.com/api/auth/logout')
         .then(response => {
             return response.data;
         })
@@ -27,7 +27,7 @@ const logout = () => {
 };
 
 const loggedin = () => {
-    return axios.get('/api/auth/loggedin');
+    return axios.get('https://musicthingy.herokuapp.com/api/auth/loggedin');
 };
 
 export { signup, login, logout, loggedin };

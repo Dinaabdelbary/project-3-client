@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export const getPreviousMessages = (participants) => {
-    return axios.post('/api/chat/conversation', { participants })
+    return axios.post('https://musicthingy.herokuapp.com/api/chat/conversation', { participants })
         .then(response => {
             return response.data;
         })
@@ -12,7 +12,7 @@ export const getPreviousMessages = (participants) => {
 }
 
 export const sendMessage = (messageData) => {
-    return axios.post(`/api/chat/conversation/${messageData.room}/new-message`, { messageData })
+    return axios.post(`https://musicthingy.herokuapp.com/api/chat/conversation/${messageData.room}/new-message`, { messageData })
         .then(response => {
             return response.data;
         })
