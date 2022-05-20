@@ -36,8 +36,6 @@ function ProfilePage() {
       .then((response) => {
         console.log('response.data:', response.data);
         setUser(response.data);
-
-        return response.data;
       })
       .catch((error) => {
         return error.response.data;
@@ -70,6 +68,8 @@ function ProfilePage() {
       })
       .catch((error) => console.log(error));
   };
+
+  const genresArray = user.genres?.map(genre => <span className="details">{genre}</span>)
 
   return (
     <div className='profile-page'>
