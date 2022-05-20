@@ -85,7 +85,7 @@ const ProfileCard = (props) => {
             {props.user.bio}
           </div>
           <p className='details'>Roles I play: {instruments}</p>
-          <p className='details'>{props.user.location}location</p>
+          <p className='details'><i>{props.user.location}</i></p>
           {!isFriend && (
             <button
               className='raise'
