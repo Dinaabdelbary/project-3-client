@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setCurrentUser, storedUser } from '../features/auth/authSlice';
@@ -17,8 +17,12 @@ function ProfileForm() {
     genres: [],
     bio: '',
   });
-
-  const [image, setImage] = useState('')
+  const { name, instruments, location, profilePicture, genres, bio } =
+    userData.currentUser;
+  useEffect(() => {
+    setUser({ name, instruments, location, profilePicture, genres, bio });
+  }, []);
+  const [image, setImage] = useState('');
 
   const handleStringChange = (event) => {
     const { name, value } = event.target;
@@ -29,13 +33,13 @@ function ProfileForm() {
   };
 
   const handleImageUpload = async (event) => {
-		const uploadData = new FormData();
-		uploadData.append('profilePicture', event.target.files[0]);
-		const uploadedImage = await uploadImage(uploadData);
-    console.log('uploadData: ', uploadData)
-    setUser({...user, profilePicture: uploadedImage.data.secure_url})
-		setImage(uploadedImage.data.secure_url);
-	};
+    const uploadData = new FormData();
+    uploadData.append('profilePicture', event.target.files[0]);
+    const uploadedImage = await uploadImage(uploadData);
+    console.log('uploadData: ', uploadData);
+    setUser({ ...user, profilePicture: uploadedImage.data.secure_url });
+    setImage(uploadedImage.data.secure_url);
+  };
 
   const handleCheckboxChange = async (event, type) => {
     let newArray = [...user[type], event.target.id];
@@ -59,7 +63,7 @@ function ProfileForm() {
         userData.currentUser.name
       );
     }
-    console.log(user,'Nothing should be empty')
+    console.log(user, 'Nothing should be empty');
     updateUser(id, user)
       .then((updatedUser) => {
         setUser(updatedUser);
@@ -72,7 +76,7 @@ function ProfileForm() {
 
   const getCurrentLocation = (event) => {
     event.preventDefault();
-    const location = getLocation()
+    getLocation()
       .then((response) => {
         const { city, country } = response.data;
         setUser({
@@ -84,130 +88,144 @@ function ProfileForm() {
   };
 
   return (
-    <div>
+    <div className='cardHeader'>
       <form onSubmit={handleSubmit}>
-        <img className='CoverImage' src={image || userData.currentUser.profilePicture} alt='cover photo'/>
-        <input type='file' onChange={handleImageUpload}/>
-        <div className='name'>Name: {userData.currentUser.name}</div>
-        <input
-          type='text'
-          name='name'
-          placeholder={userData.currentUser.name}
-          value={user.name}
-          onChange={handleStringChange}
-        />
+        <h2 className='name'>Edit Profile:</h2>
+        <div className='form-section'>
+          <div className='row-centered'>
+            <img
+              className='avatar'
+              src={image || userData.currentUser.profilePicture}
+              alt='cover photo'
+            />
 
-        <p className='details'>
-          Instruments: {userData.currentUser.instruments}
-        </p>
-        <label htmlFor='guitar'>Guitar</label>
-        <input
-          type='checkbox'
-          id='guitar'
-          value='guitar'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-        <label htmlFor='drums'>Drums</label>
-        <input
-          type='checkbox'
-          id='drums'
-          value='drums'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-        <label htmlFor='bass'>Bass</label>
-        <input
-          type='checkbox'
-          id='bass'
-          value='bass'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-        <label htmlFor='vocals'>Vocals</label>
-        <input
-          type='checkbox'
-          id='vocals'
-          value='vocals'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-        <label htmlFor='keyboard'>Keyboard</label>
-        <input
-          type='checkbox'
-          id='keyboard'
-          value='keyboard'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-        <label htmlFor='other'>Other</label>
-        <input
-          type='checkbox'
-          id='other'
-          value='other'
-          onChange={(event) => handleCheckboxChange(event, 'instruments')}
-        />
-
-        <p className='details'>Genres: {userData.currentUser.genres}</p>
-        <label htmlFor='rock'>Rock</label>
-        <input
-          type='checkbox'
-          id='rock'
-          value='rock'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-        <label htmlFor='electronic'>Electronic</label>
-        <input
-          type='checkbox'
-          id='electronic'
-          value='electronic'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-        <label htmlFor='metal'>Metal</label>
-        <input
-          type='checkbox'
-          id='metal'
-          value='metal'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-        <label htmlFor='jazz'>Jazz</label>
-        <input
-          type='checkbox'
-          id='jazz'
-          value='jazz'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-        <label htmlFor='hip hop/rap'>Hip hop/Rap</label>
-        <input
-          type='checkbox'
-          id='hip hop/rap'
-          value='hip hop/rap'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-        <label htmlFor='pop'>Pop</label>
-        <input
-          type='checkbox'
-          id='pop'
-          value='pop'
-          onChange={(event) => handleCheckboxChange(event, 'genres')}
-        />
-
-        <p className='details'>Bio: {userData.currentUser.bio}</p>
-        <textarea
-          name='bio'
-          value={user.bio}
-          onChange={handleStringChange}
-          rows='3'
-          cols='30'
-        />
-
-        <div className='details'>
+            <input type='file' onChange={handleImageUpload} />
+          </div>
           <input
             type='text'
-            placeholder='location'
+            name='name'
+            placeholder={userData.currentUser.name}
+            value={user.name}
             onChange={handleStringChange}
-            value={user.location}
           />
-          <button className='raise' onClick={getCurrentLocation}>
-            Use your current location
-          </button>
+
+          <p className='details'>
+            Instruments: {userData.currentUser.instruments}
+          </p>
+          <div className='row-centered'>
+            <input
+              type='checkbox'
+              id='guitar'
+              value='guitar'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='guitar'>Guitar</label>
+            <input
+              type='checkbox'
+              id='drums'
+              value='drums'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='drums'>Drums</label>
+            <input
+              type='checkbox'
+              id='bass'
+              value='bass'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='bass'>Bass</label>
+            <input
+              type='checkbox'
+              id='vocals'
+              value='vocals'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='vocals'>Vocals</label>
+            <input
+              type='checkbox'
+              id='keyboard'
+              value='keyboard'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='keyboard'>Keyboard</label>
+            <input
+              type='checkbox'
+              id='other'
+              value='other'
+              onChange={(event) => handleCheckboxChange(event, 'instruments')}
+            />
+            <label htmlFor='other'>Other</label>
+          </div>
+
+          <p className='details'>Genres: {userData.currentUser.genres}</p>
+          <div className='row-centered'>
+            <input
+              type='checkbox'
+              id='rock'
+              value='rock'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='rock'>Rock</label>
+            <input
+              type='checkbox'
+              id='electronic'
+              value='electronic'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='electronic'>Electronic</label>
+            <input
+              type='checkbox'
+              id='metal'
+              value='metal'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='metal'>Metal</label>
+            <input
+              type='checkbox'
+              id='jazz'
+              value='jazz'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='jazz'>Jazz</label>
+            <input
+              type='checkbox'
+              id='hip hop/rap'
+              value='hip hop/rap'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='hip hop/rap'>Hip hop/Rap</label>
+            <input
+              type='checkbox'
+              id='pop'
+              value='pop'
+              onChange={(event) => handleCheckboxChange(event, 'genres')}
+            />
+            <label htmlFor='pop'>Pop</label>
+          </div>
+
+          <p className='details'>Bio: {userData.currentUser.bio}</p>
+          <textarea
+            name='bio'
+            value={user.bio}
+            onChange={handleStringChange}
+            rows='3'
+            cols='30'
+          />
+
+          <div className='details'>
+            <input
+              type='text'
+              placeholder='e.g. Berlin, DE'
+              name='location'
+              onChange={handleStringChange}
+              value={user.location}
+            />
+            <button className='raise' onClick={getCurrentLocation}>
+              Use your current location
+            </button>
+          </div>
+          <button>Update</button>
         </div>
-        <button>Update</button>
       </form>
     </div>
   );
