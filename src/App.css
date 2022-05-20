@@ -63,6 +63,12 @@ svg .polygon {
   width: 25%;
 }
 
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
 .name {
   font-size: 1.5rem;
   font-weight: 500;
@@ -687,6 +693,7 @@ h4 {
   top: 40%;
   left: 50%;
   background-color: #890f0d;
+  opacity: 0.9;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   /* in case I need a separate tag for the form */
