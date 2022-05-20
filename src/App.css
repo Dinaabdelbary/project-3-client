@@ -440,9 +440,7 @@ a {
 }
 
 .toast-notification {
-  background-color: #282828;
   color: white;
-  opacity: 0.8;
   border-radius: 5px;
   padding: 20px;
   z-index: 2;
@@ -451,6 +449,14 @@ a {
   height: 3rem;
   text-align: center;
   position: absolute;
+}
+
+.notif-container {
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #282828;
+    opacity: 0.8;
 }
 
 .flexbox{

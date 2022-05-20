@@ -57,7 +57,7 @@ const NotificationCard = ({ user }) => {
   };
 
   return (
-    <div className="container">
+    <div className="notif-container">
       <p>
         <Link to={`/${user._id}`}>{`${user.name}`}</Link> wants to connect!
       </p>
