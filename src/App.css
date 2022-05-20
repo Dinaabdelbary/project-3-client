@@ -107,6 +107,11 @@ svg .polygon {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
+h2 {
+  color:#29373d;
+  font-weight: bold;
+}
+
 .form-button {
   /* background:#460000;
   color: #FFF6EA;
@@ -194,12 +199,13 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:center
+  justify-content:center;
+  gap: 5px;
 }
 .form-section {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
 
@@ -412,6 +418,14 @@ a {
   border-radius: 50%;
   background-color: #fff;
 }
+.avatar-form {
+  display: block;
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  background-color: #fff;
+}
 
 .toast-notification {
   background-color: lightgreen;
@@ -616,6 +630,20 @@ h3 {
   font-size: 20px;
   font-weight: 300;
   color: #890f0d;
+}
+form h3 {
+  /* background-color:rgba(0, 0, 0, 0.443); */
+  color: #890f0d;
+  font-weight: bold;
+}
+
+.grow-label { 
+  cursor: pointer;
+  transition: all .2s ease-in-out; 
+  }
+  
+.grow-label:hover { 
+  transform: scale(1.4); 
 }
 
 .project-name {
