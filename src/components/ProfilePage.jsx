@@ -36,8 +36,6 @@ function ProfilePage() {
       .then((response) => {
         console.log('response.data:', response.data);
         setUser(response.data);
-
-        return response.data;
       })
       .catch((error) => {
         return error.response.data;
@@ -52,24 +50,26 @@ function ProfilePage() {
   };
 
   const connectHandler = () => {
-    sendFriendRequest(id)
+    sendFriendRequest(userData.currentUser._id, id)
       .then((response) => {
-        console.log('response after connect: ', response);
-        setIsPending(true);
+        // add user id in sentRequest list of loggedin user
+        console.log('response after sending friend request', response);
         dispatch(setCurrentUser(response.data));
+        setIsPending(true);
       })
       .catch((error) => console.log(error));
   };
 
   const unfollowHandler = () => {
-    unfollow(id)
+    unfollow(userData.currentUser._id, id)
       .then((updatedUser) => {
         console.log('user after promise: ', updatedUser.data);
         dispatch(setCurrentUser(updatedUser.data));
       })
       .catch((error) => console.log(error));
   };
-  const genresArray = user?.genres.map((genre) => <span className="details">{genre}, </span>)
+
+  const genresArray = user.genres?.map(genre => <span className="details">{genre}</span>)
 
   return (
     <div className='profile-page'>
@@ -81,7 +81,7 @@ function ProfilePage() {
       <p className='details'><i>Genres:</i> {genresArray}</p>
       <p className='details'><i>About me:</i> {user?.bio}</p>
       <div className='details'>
-        <i>Currently at: </i>
+        <i className=''>place</i>
         {user?.location}
       </div>
       {/* {hasReceivedRequest && <Notification/>} */}

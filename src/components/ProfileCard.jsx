@@ -35,9 +35,9 @@ const ProfileCard = (props) => {
     props.setChatId(recepientId);
   };
 
-  //clickHandler is only a placeholder until we have chat
-  const clickHandler = () => {
-    sendFriendRequest(props.user._id)
+  //handleRequestConnection is only a placeholder until we have chat
+  const handleRequestConnection = () => {
+    sendFriendRequest(userData.currentUser._id, props.user._id)
       .then((response) => {
         // add user id in sentRequest list of loggedin user
         console.log('response after sending friend request', response);
@@ -79,18 +79,18 @@ const ProfileCard = (props) => {
               <FaRocketchat color='white' />
             </div>
           </div>
-          <p>{props.user.instruments[0]}</p>
+          <h4 className='title'>{props.user.instruments[0]}</h4>
           <div className='bio'>
             {/* >>>>>>> origin/socketio */}
             {props.user.bio}
           </div>
           <p className='details'>Roles I play: {instruments}</p>
-          <p className='details'><i>{props.user.location}</i></p>
+          <p className='details'>{props.user.location}location</p>
           {!isFriend && (
             <button
               className='raise'
               disabled={isPending}
-              onClick={clickHandler}
+              onClick={handleRequestConnection}
             >
               {isPending ? `Pending...` : 'Connect'}
             </button>

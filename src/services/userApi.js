@@ -6,27 +6,31 @@ const getUser = (id) => {
 
 const getUserList = () => {
   return axios.get('https://musicthingy.herokuapp.com/api/list');
-};4
+};
 
 const updateUser = (id, user) => {
   console.log('id and user: ', id, user)
   return axios.post(`https://musicthingy.herokuapp.com/api/profile/user/${id}`, user)
 };
 
-const sendFriendRequest = (id) => {
-  return axios.get(`https://musicthingy.herokuapp.com/connect/${id}`);
+
+// Connection-related calls
+
+const sendFriendRequest = (currentUserId, otherUserId) => {
+  console.log(currentUserId, 'current user Id on axios call', otherUserId, 'added user id');
+  return axios.post(`https://musicthingy.herokuapp.com/connect/${otherUserId}`, {currentUserId:currentUserId});
 };
 
-const acceptFriendRequest = (id) => {
-  return axios.get(`https://musicthingy.herokuapp.com/connect/accept/${id}`)
+const acceptFriendRequest = (currentUserId, otherUserId) => {
+  return axios.post(`https://musicthingy.herokuapp.com/connect/accept/${otherUserId}`, {currentUserId:currentUserId})
 };
 
-const declineFriendRequest = (id) => {
-  return axios.get(`https://musicthingy.herokuapp.com/connect/decline/${id}`)
+const declineFriendRequest = (currentUserId, otherUserId) => {
+  return axios.post(`https://musicthingy.herokuapp.com/connect/decline/${otherUserId}`, {currentUserId:currentUserId})
 };
 
-const unfollow = (id) => {
-  return axios.get(`https://musicthingy.herokuapp.com/connect/unfollow/${id}`)
+const unfollow = (currentUserId, otherUserId) => {
+  return axios.post(`https://musicthingy.herokuapp.com/connect/unfollow/${otherUserId}`, {currentUserId:currentUserId})
 }
 
 const uploadImage = (file) => {
