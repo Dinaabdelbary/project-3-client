@@ -81,8 +81,7 @@ function ProfilePage() {
       <p className='details'><i>Genres:</i> {genresArray}</p>
       <p className='details'><i>About me:</i> {user?.bio}</p>
       <div className='details'>
-        <i className=''>place</i>
-        {user?.location}
+        <i>{user?.location}</i>
       </div>
       {/* {hasReceivedRequest && <Notification/>} */}
       {isOwner ? (

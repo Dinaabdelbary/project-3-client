@@ -79,13 +79,13 @@ const ProfileCard = (props) => {
               <FaRocketchat color='white' />
             </div>
           </div>
-          <h4 className='title'>{props.user.instruments[0]}</h4>
+          <h4 className='details'>{props.user.instruments[0]}</h4>
           <div className='bio'>
             {/* >>>>>>> origin/socketio */}
             {props.user.bio}
           </div>
           <p className='details'>Roles I play: {instruments}</p>
-          <p className='details'>{props.user.location}location</p>
+          <p className='details'><i>{props.user.location}</i></p>
           {!isFriend && (
             <button
               className='raise'
