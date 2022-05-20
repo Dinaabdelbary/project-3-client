@@ -61,6 +61,15 @@ const Navbar = () => {
             itemType='https://schema.org/SiteNavigationElement'
           >
             <ul className='navbar'>
+            <li>
+                <button
+                  className="buttons"
+                  type="button"
+                  onClick={logoutHandler}
+                >
+                  Logout
+                </button>
+              </li>
               <li onClick={handleHamburger}>
                 <Link to='/'>Home</Link>
               </li>
