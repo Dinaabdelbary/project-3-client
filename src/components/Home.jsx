@@ -19,11 +19,11 @@ const Home = (props) => {
       ) : (
         <div className='project-name'>
         <br/>
-        <h1>Find people to play music with!</h1>
+        <h1 className='center'>Find people to play music with!</h1>
         </div>
       )}
       <div className='container'>
-      <h2>Cool musicians near you!</h2>
+      <h2 className='center'>Cool musicians near you!</h2>
       </div>
       <ListOfUsers setChatId={props.setChatId} />
     </div>

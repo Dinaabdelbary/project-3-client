@@ -35,7 +35,7 @@ const FriendList = (props) => {
  
   return (
     <div className='user-list'>
-      <h2>Your friends</h2>
+      <h2 className='center'>Your friends</h2>
       {allFriends}
     </div>
   );
