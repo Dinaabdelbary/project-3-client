@@ -55,7 +55,7 @@ function Chat(props) {
   return (
     <div id='chat-container'>
       <div className='chat-header'>
-        <h3>Insert name</h3>
+        <h3>{props.user.name}</h3>
 
         <div onClick={handleCloseChat}>
           <FaWindowClose />
