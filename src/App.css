@@ -436,8 +436,8 @@ a {
 
 .toast-notification {
   padding: 10px;
-  z-index: 1;
-  margin: 10px;
+  z-index: 2;
+  margin-top: 20px;
   width: 15rem;
   height: 2rem;
   text-align: center;
