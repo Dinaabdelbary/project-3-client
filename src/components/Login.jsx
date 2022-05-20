@@ -67,7 +67,7 @@ const Login = () => {
           </button>
         </form>
         <h4>New here?</h4>
-        <Link to='/signup'>
+        <Link to='/signup' className="buttons raise">
          Go to signup
         </Link>
       </div>

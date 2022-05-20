@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { setCurrentUser, storedUser } from '../features/auth/authSlice';
 import { getLocation } from '../services/locationApi';
 import { updateUser, uploadImage } from '../services/userApi';
@@ -9,6 +9,7 @@ function ProfileForm() {
   const userData = useSelector(storedUser);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '',
     instruments: [],
@@ -72,6 +73,7 @@ function ProfileForm() {
       .catch((error) => {
         console.log(error, 'Error when trying to update profile');
       });
+      navigate('/');
   };
 
   const getCurrentLocation = (event) => {

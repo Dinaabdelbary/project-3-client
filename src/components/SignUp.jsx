@@ -66,7 +66,7 @@ const SignUp = () => {
           </form>
         </div>
         <h4>Alredy registered?</h4>
-        <Link to='/login' className="form-button raise">
+        <Link to='/login' className="buttons raise">
          Login
         </Link>
       </div>
