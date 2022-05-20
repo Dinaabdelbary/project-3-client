@@ -8,7 +8,7 @@ const Notification = () => {
   const usersPendingRequest = userData.currentUser.pendingReceivedRequests;
 
   return (
-    <div>
+    <div className='toast-notification'>
       {usersPendingRequest.map((user) => (
         <NotificationCard user={user} />
       ))}

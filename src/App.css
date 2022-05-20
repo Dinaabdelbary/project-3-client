@@ -4,6 +4,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
 } */
+
 .navmenu {
   padding: 5px;
   position: fixed;
@@ -434,8 +435,6 @@ a {
 }
 
 .toast-notification {
-  background-color: lightgreen;
-  border-radius: 5px;
   padding: 10px;
   z-index: 1;
   margin: 10px;
