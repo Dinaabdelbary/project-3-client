@@ -5,8 +5,8 @@ const getUser = (id) => {
 };
 
 const getUserList = () => {
-  return axios.get('https://musicthingy.herokuapp.com/api/user/list');
-};
+  return axios.get('https://musicthingy.herokuapp.com/api/list');
+};4
 
 const updateUser = (id, user) => {
   console.log('id and user: ', id, user)
