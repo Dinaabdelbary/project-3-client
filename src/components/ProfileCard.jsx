@@ -79,7 +79,7 @@ const ProfileCard = (props) => {
               <FaRocketchat color='white' />
             </div>
           </div>
-          <h4 className='title'>{props.user.instruments[0]}</h4>
+          <p>{props.user.instruments[0]}</p>
           <div className='bio'>
             {/* >>>>>>> origin/socketio */}
             {props.user.bio}

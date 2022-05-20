@@ -16,7 +16,9 @@ const Home = (props) => {
       {userData.currentUser.friendList.length ? (
         <FriendList setChatId={props.setChatId} />
       ) : (
+        <div className='container'>
         <h1>Find people to play music with!</h1>
+        </div>
       )}
 
       <ListOfUsers setChatId={props.setChatId} />
