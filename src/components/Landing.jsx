@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
 
   return (
-    <div>
+    <div className='background-landing'>
       <div className='project-name'>
       <h1>BAND AID</h1>
-      <h3>
+      <h2>
       Find musicians in your area, connect, and jam!
-      </h3>
+      </h2>
       </div>
       <div className='form'>
         <div className='container'>

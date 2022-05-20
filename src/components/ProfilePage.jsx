@@ -71,8 +71,8 @@ function ProfilePage() {
   };
 
   return (
-    <div>
-      <img className='CoverImage' src='' alt='cover photo' />
+    <div className='profile-page'>
+      <img className='card-header' src={user?.profilePicture} alt='cover photo' />
       <div className='name'>Name: {user?.name}</div>
       <p className='details'>Instrument I play: {user?.instruments}</p>
       <p className='details'>Genres: {user?.genres}</p>
