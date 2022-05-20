@@ -28,13 +28,13 @@ const FriendList = (props) => {
 
     return (
       <div key={user._id}>
-        {!isCurrentUser && isFriend && <ProfileCard user={user} setChatId={props.setChatId}/>}
+        {!isCurrentUser && isFriend && <ProfileCard user={user} setChatId={props.setChatId} />}
       </div>
     );
   });
  
   return (
-    <div className='user-list'>
+    <div>
       <h2>Your friends</h2>
       {allFriends}
     </div>

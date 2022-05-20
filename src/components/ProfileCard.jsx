@@ -50,6 +50,10 @@ const ProfileCard = (props) => {
 
   const isFriend = userData.currentUser?.friendList.includes(props.user._id);
 
+  const instruments = props.user.instruments.map((instrument) => (
+    <span className='card-text'> {instrument}</span>
+  ));
+
   return (
     <div className='profileList'>
       <div className='profileCard'>
@@ -75,13 +79,12 @@ const ProfileCard = (props) => {
               <FaRocketchat color='white' />
             </div>
           </div>
-          <h4 className='title'>Guitarist</h4>
+          <h4 className='title'>{props.user.instruments[0]}</h4>
           <div className='bio'>
             {/* >>>>>>> origin/socketio */}
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Dignissimos, aperiam.{props.user.bio}
+            {props.user.bio}
           </div>
-          <p className='details'>{props.user.instruments}instruments</p>
+          <p className='details'>Roles I play: {instruments}</p>
           <p className='details'>{props.user.location}location</p>
           {!isFriend && (
             <button
