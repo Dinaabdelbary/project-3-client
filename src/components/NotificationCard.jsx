@@ -61,7 +61,7 @@ const NotificationCard = ({ user }) => {
       <p>
         <Link to={`/${user._id}`}>{`${user.name}`}</Link> wants to connect!
       </p>
-      <div>
+      <div className="flexbox">
         <button className="buttons" onClick={handleAccept}>
           Accept
         </button>

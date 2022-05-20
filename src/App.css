@@ -444,13 +444,17 @@ a {
   color: white;
   opacity: 0.8;
   border-radius: 5px;
-  padding-top: 20px;
+  padding: 20px;
   z-index: 2;
-  margin-top: 60px;
+  margin-top: 70px;
   width: 16rem;
-  height: 4rem;
+  height: 3rem;
   text-align: center;
   position: absolute;
+}
+
+.flexbox{
+  display: flexbox;
 }
 .name {
   font-size: 1.3rem;
