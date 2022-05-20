@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { setCurrentUser, storedUser } from '../features/auth/authSlice';
-import { sendFriendRequest, getUser, unfollow } from '../services/userApi';
+import { getUser, sendFriendRequest, unfollow } from '../services/userApi';
 
-function ProfilePage() {
+function ProfilePage(props) {
   const [user, setUser] = useState({
     name: '',
     instruments: [],
@@ -69,17 +69,33 @@ function ProfilePage() {
       .catch((error) => console.log(error));
   };
 
-  const genresArray = user.genres?.map(genre => <span className="details">{genre}</span>)
+  const genresArray = user.genres?.map((genre) => (
+    <span className='details'>{genre}</span>
+  ));
+
+  const openChat = (recepientId) => {
+    props.setChatId(recepientId);
+  };
 
   return (
     <div className='profile-page'>
-    <div className='container'>
-    <img className='card-img-top raise' src={user?.profilePicture} alt='cover photo' />
-    </div>
+      <div className='container'>
+        <img
+          className='card-img-top raise'
+          src={user?.profilePicture}
+          alt='cover photo'
+        />
+      </div>
       <div className='name'>{user?.name}</div>
-      <p className='details'><i>Instrument I play:</i> {user?.instruments}</p>
-      <p className='details'><i>Genres:</i> {genresArray}</p>
-      <p className='details'><i>About me:</i> {user?.bio}</p>
+      <p className='details'>
+        <i>Instrument I play:</i> {user?.instruments}
+      </p>
+      <p className='details'>
+        <i>Genres:</i> {genresArray}
+      </p>
+      <p className='details'>
+        <i>About me:</i> {user?.bio}
+      </p>
       <div className='details'>
         <i>{user?.location}</i>
       </div>
@@ -100,7 +116,9 @@ function ProfilePage() {
           >
             {isPending ? `Pending...` : 'Connect'}
           </button>
-          <button className='raise'>Chat</button>
+          <button className='raise' onClick={() => openChat(id)}>
+            Chat
+          </button>
         </div>
       )}
       {isFriend && (

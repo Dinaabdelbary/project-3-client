@@ -54,12 +54,22 @@ function App() {
           <Route element={<IsLoggedIn />}>
             <Route path='/' element={<Home setChatId={setChatId} />} />
             <Route path='/location' element={<UserProfile />} />
-            <Route path='/:id' element={<ProfilePage />} />
+            <Route
+              path='/:id'
+              element={
+                <ProfilePage
+                  chatId={chatId}
+                  socketRef={socketRef}
+                  feed={feed}
+                  setFeed={setFeed}
+                  setChatId={setChatId}
+                />
+              }
+            />
             <Route path='/ListOfUsers' element={<ProfileCard />} />
             <Route path='/search' element={<SearchResult />} />
             <Route path='/editprofile/:id' element={<ProfileForm />} />
           </Route>
-          
         </Routes>
       </div>
     </div>
