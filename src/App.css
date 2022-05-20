@@ -8,6 +8,7 @@
 .navmenu {
   padding: 5px;
   position: fixed;
+  z-index: 1;
 }
 .profileCard {
   /* border: 1px solid gray; */
@@ -391,6 +392,7 @@ a {
     height: 24px;
     line-height: 24px;
     position: fixed;
+    z-index: 1;
   }
   .toggle-nav {
     padding: 6px 10px;
@@ -441,7 +443,6 @@ a {
 
 .toast-notification {
   color: white;
-  border-radius: 5px;
   padding: 20px;
   z-index: 2;
   margin-top: 70px;
@@ -454,9 +455,10 @@ a {
 .notif-container {
     width: 80%;
     padding: 10px;
-    margin: 0 auto;
+    margin: 5px;
     background-color: #282828;
     opacity: 0.8;
+    border-radius: 5px;
 }
 
 .flexbox{
