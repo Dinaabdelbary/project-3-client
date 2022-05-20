@@ -435,9 +435,12 @@ a {
 }
 
 .toast-notification {
+  background-color: #282828;
+  opacity: 0.8;
+  border-radius: 5px;
   padding: 10px;
   z-index: 2;
-  margin-top: 20px;
+  margin-top: 25px;
   width: 15rem;
   height: 2rem;
   text-align: center;
