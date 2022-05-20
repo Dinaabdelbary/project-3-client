@@ -69,12 +69,12 @@ function ProfilePage() {
       })
       .catch((error) => console.log(error));
   };
-  const genresArray = user?.genres.map((genre) => <span className="details">{genre}</span>)
+  const genresArray = user?.genres.map((genre) => <span className="details">{genre} </span>)
 
   return (
     <div className='profile-page'>
       <img className='card-header' src={user?.profilePicture} alt='cover photo' />
-      <div className='name'>Name: {user?.name}</div>
+      <div className='name'>{user?.name}</div>
       <p className='details'>Instrument I play: {user?.instruments}</p>
       <p className='details'>Genres: {genresArray}</p>
       <p className='details'>About me: {user?.bio}</p>
