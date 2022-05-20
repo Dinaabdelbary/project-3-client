@@ -420,9 +420,16 @@ a {
 }
 
 body {
+  background-color: #d8d3d0;
+}
+
+.background-landing {
   background-image: url("../public/WhatsApp\ Image\ 2022-05-11\ at\ 10.29.43\ AM.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  position: fixed; 
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .container {
@@ -626,4 +633,24 @@ h4 {
   justify-content: space-around;
   flex-wrap: wrap;
   padding-top: 50px;
+}
+
+/* Profile page */
+
+.profile-page { 
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  background-color: rgba(48, 46, 46, 0.2);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* in case I need a separate tag for the form */
+  padding: 5em;
+  height: 400px;
+  /* border-radius: 2%; */
+  border-left: 2px rgba(255, 255, 255, 0.03);
+  border-top: 2px rgba(255, 255, 255, 0.03);
+  /* backdrop-filter: blur(10px);  test on home page */
+  box-shadow: 10px 10px 40px -6px;
+  text-align: center;
 }
