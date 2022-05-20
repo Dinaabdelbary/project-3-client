@@ -75,11 +75,11 @@ function ProfilePage() {
     <div className='profile-page'>
       <img className='card-header' src={user?.profilePicture} alt='cover photo' />
       <div className='name'>{user?.name}</div>
-      <p className='details'>Instrument I play: {user?.instruments}</p>
-      <p className='details'>Genres: {genresArray}</p>
-      <p className='details'>About me: {user?.bio}</p>
+      <p className='details'><i>Instrument I play:</i> {user?.instruments}</p>
+      <p className='details'><i>Genres:</i> {genresArray}</p>
+      <p className='details'><i>About me:</i> {user?.bio}</p>
       <div className='details'>
-        <i className=''>Currently at: </i>
+        <i>Currently at: </i>
         {user?.location}
       </div>
       {/* {hasReceivedRequest && <Notification/>} */}
