@@ -69,7 +69,7 @@ function ProfilePage() {
       })
       .catch((error) => console.log(error));
   };
-  const genresArray = user?.genres.map((genre) => <span className="details">{genre} </span>)
+  const genresArray = user?.genres.map((genre) => <span className="details">{genre}, </span>)
 
   return (
     <div className='profile-page'>
