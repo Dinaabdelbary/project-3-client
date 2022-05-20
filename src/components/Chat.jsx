@@ -5,11 +5,13 @@ import { storedUser } from '../features/auth/authSlice';
 // import io from "socket.io-client";
 import { getPreviousMessages, sendMessage } from '../services/chat';
 import { FaWindowClose } from 'react-icons/fa';
+import { getUser } from '../services/userApi';
 
 function Chat(props) {
   const userData = useSelector(storedUser); // returns data from redux store
   const [message, setMessage] = useState('');
   const participants = [props.chatId, userData.currentUser._id];
+  const [recepientUser, setRecepientUser] = useState({});
 
   const handleCloseChat = () => {
     props.setChatId(null);
@@ -51,11 +53,21 @@ function Chat(props) {
         );
       })
     : [];
+  useEffect(() => {
+     getUser(props.chatId)
+      .then((response) => {
+        console.log(response);
+        setRecepientUser(response.data);
+      })
+      .catch((error) => {
+        console.log(error, 'Error getting recepient user');
+      });
+  }, []);
 
   return (
     <div id='chat-container'>
       <div className='chat-header'>
-        <h3>{props.user.name}</h3>
+        <h3>{recepientUser?.name}</h3>
 
         <div onClick={handleCloseChat}>
           <FaWindowClose />
