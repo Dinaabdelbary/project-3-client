@@ -444,11 +444,11 @@ a {
   color: white;
   opacity: 0.8;
   border-radius: 5px;
-  padding: 15px;
+  padding-top: 20px;
   z-index: 2;
-  margin-top: 50px;
-  width: 15rem;
-  height: 5rem;
+  margin-top: 60px;
+  width: 16rem;
+  height: 4rem;
   text-align: center;
   position: absolute;
 }
