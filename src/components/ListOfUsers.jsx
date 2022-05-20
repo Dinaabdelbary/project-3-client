@@ -35,8 +35,6 @@ const UsersList = (props) => {
 
   return (
     <div className='user-list'>
-      <h2>Find musicians!</h2>
-
       {allUsers}
     </div>
   );

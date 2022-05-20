@@ -31,11 +31,12 @@ const SignUp = () => {
   };
   return (
     <div>
-      <h1>Find other musicians. Connect. Play.</h1>
+     <div className='project-name'>
+      <h1>BAND AID</h1>
       <h3>
-        Wanna play music? Find musicians in your area, connect with them and
-        jam!
+      Find musicians in your area, connect, and jam!
       </h3>
+      </div>
       <div className='form'>
         <div className='App'>
           {error ? <h4>{error}</h4> : <></>}

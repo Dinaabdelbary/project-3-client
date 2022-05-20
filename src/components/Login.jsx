@@ -39,7 +39,7 @@ const Login = () => {
     <div>
 
       <div className='project-name'>
-      <h1>PROJECT NAME</h1>
+      <h1>BAND AID</h1>
       <h3>
       Find musicians in your area, connect, and jam!
       </h3>

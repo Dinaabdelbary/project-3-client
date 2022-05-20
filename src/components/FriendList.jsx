@@ -6,7 +6,7 @@ import { getUserList } from '../services/userApi';
 import ProfileCard from './ProfileCard';
 import { useDispatch } from 'react-redux';
 
-const FriendList = () => {
+const FriendList = (props) => {
   const userData = useSelector(storedUser); // returns data from redux store
   const [listOfUsers, setListOfUsers] = useState([]);
   const dispatch = useDispatch();
@@ -28,13 +28,13 @@ const FriendList = () => {
 
     return (
       <div key={user._id}>
-        {!isCurrentUser && isFriend && <ProfileCard user={user} />}
+        {!isCurrentUser && isFriend && <ProfileCard user={user} setChatId={props.setChatId}/>}
       </div>
     );
   });
  
   return (
-    <div>
+    <div className='user-list'>
       <h2>Your friends</h2>
       {allFriends}
     </div>

@@ -17,7 +17,8 @@ const SearchResult = () => {
   }, []);
 
   return (
-    <div>
+    <div className='user-list'>
+    {/* <h2>Results for {query}</h2> */}
       {userList.map((user) => {
         return <ProfileCard user={user} />;
       })}
