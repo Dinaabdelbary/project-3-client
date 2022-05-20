@@ -220,6 +220,7 @@ button {
 
 .center {
   text-align: center;
+  padding-top: 50px;
 }
 
 
@@ -440,9 +441,10 @@ a {
 
 .toast-notification {
   background-color: #282828;
+  color: white;
   opacity: 0.8;
   border-radius: 5px;
-  padding: 10px;
+  padding: 15px;
   z-index: 2;
   margin-top: 50px;
   width: 15rem;
@@ -689,7 +691,7 @@ h4 {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 /* Profile page */
