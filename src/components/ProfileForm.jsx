@@ -93,123 +93,153 @@ function ProfileForm() {
         <h2 className='name'>Edit Profile:</h2>
         <div className='form-section'>
           <div className='row-centered'>
+            <label>
+              <h3>Change your photo:</h3>
+            </label>
+            <input type='file' onChange={handleImageUpload} />
             <img
-              className='avatar'
+              className='avatar-form raise'
               src={image || userData.currentUser.profilePicture}
               alt='cover photo'
             />
-
-            <input type='file' onChange={handleImageUpload} />
           </div>
-          <input
-            type='text'
-            name='name'
-            placeholder={userData.currentUser.name}
-            value={user.name}
-            onChange={handleStringChange}
-          />
-
-          <p className='details'>
-            Instruments: {userData.currentUser.instruments}
-          </p>
           <div className='row-centered'>
+            <label className='row-centered'>
+              <h3>Name:</h3>
+              <input
+                type='text'
+                name='name'
+                placeholder={userData.currentUser.name}
+                value={user.name}
+                onChange={handleStringChange}
+              />
+            </label>
+          </div>
+
+          <h3>Instruments: </h3>
+          <div className='row-centered'>
+            <label className='grow-label' htmlFor='guitar'>
             <input
               type='checkbox'
               id='guitar'
               value='guitar'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='guitar'>Guitar</label>
+              Guitar
+            </label>
+            <label className='grow-label' htmlFor='drums'>
             <input
               type='checkbox'
               id='drums'
               value='drums'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='drums'>Drums</label>
+              Drums
+            </label>
+            <label className='grow-label' htmlFor='bass'>
             <input
               type='checkbox'
               id='bass'
               value='bass'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='bass'>Bass</label>
+              Bass
+            </label>
+            <label className='grow-label' htmlFor='vocals'>
             <input
               type='checkbox'
               id='vocals'
               value='vocals'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='vocals'>Vocals</label>
+              Vocals
+            </label>
+            <label className='grow-label' htmlFor='keyboard'>
             <input
               type='checkbox'
               id='keyboard'
               value='keyboard'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='keyboard'>Keyboard</label>
+              Keyboard
+            </label>
+            <label className='grow-label' htmlFor='other'>
             <input
               type='checkbox'
               id='other'
               value='other'
               onChange={(event) => handleCheckboxChange(event, 'instruments')}
             />
-            <label htmlFor='other'>Other</label>
+              Other
+            </label>
           </div>
 
-          <p className='details'>Genres: {userData.currentUser.genres}</p>
+          <h3>Genres: </h3>
           <div className='row-centered'>
-            <input
-              type='checkbox'
-              id='rock'
-              value='rock'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='rock'>Rock</label>
-            <input
-              type='checkbox'
-              id='electronic'
-              value='electronic'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='electronic'>Electronic</label>
-            <input
-              type='checkbox'
-              id='metal'
-              value='metal'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='metal'>Metal</label>
-            <input
-              type='checkbox'
-              id='jazz'
-              value='jazz'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='jazz'>Jazz</label>
-            <input
-              type='checkbox'
-              id='hip hop/rap'
-              value='hip hop/rap'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='hip hop/rap'>Hip hop/Rap</label>
-            <input
-              type='checkbox'
-              id='pop'
-              value='pop'
-              onChange={(event) => handleCheckboxChange(event, 'genres')}
-            />
-            <label htmlFor='pop'>Pop</label>
+            <label className='grow-label' htmlFor='rock'>
+              <input
+                type='checkbox'
+                id='rock'
+                value='rock'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Rock
+            </label>
+            <label className='grow-label' htmlFor='electronic'>
+              <input
+                type='checkbox'
+                id='electronic'
+                value='electronic'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Electronic
+            </label>
+            <label className='grow-label' htmlFor='metal'>
+              <input
+                type='checkbox'
+                id='metal'
+                value='metal'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Metal
+            </label>
+            <label className='grow-label' htmlFor='jazz'>
+              <input
+                type='checkbox'
+                id='jazz'
+                value='jazz'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Jazz
+            </label>
+            <label className='grow-label' htmlFor='hip hop/rap'>
+              <input
+                type='checkbox'
+                id='hip hop/rap'
+                value='hip hop/rap'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Hip hop/Rap
+            </label>
+            <label className='grow-label' htmlFor='pop'>
+              <input
+                type='checkbox'
+                id='pop'
+                value='pop'
+                onChange={(event) => handleCheckboxChange(event, 'genres')}
+              />
+              Pop
+            </label>
           </div>
 
-          <p className='details'>Bio: {userData.currentUser.bio}</p>
+          <h3>Bio: </h3>
           <textarea
             name='bio'
             value={user.bio}
             onChange={handleStringChange}
+            placeholder='Tell us about your story...'
             rows='3'
-            cols='30'
+            cols='50'
           />
 
           <div className='details'>
@@ -220,11 +250,11 @@ function ProfileForm() {
               onChange={handleStringChange}
               value={user.location}
             />
-            <button className='raise' onClick={getCurrentLocation}>
+            <button className='buttons raise' onClick={getCurrentLocation}>
               Use your current location
             </button>
           </div>
-          <button>Update</button>
+          <button className='buttons raise'>Update</button>
         </div>
       </form>
     </div>
@@ -232,3 +262,4 @@ function ProfileForm() {
 }
 
 export default ProfileForm;
+ 
