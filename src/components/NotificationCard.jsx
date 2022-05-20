@@ -1,9 +1,9 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { setCurrentUser, storedUser } from '../features/auth/authSlice';
-import { storedUsers } from '../features/user/userSlice';
-import { acceptFriendRequest, declineFriendRequest } from '../services/userApi';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setCurrentUser, storedUser } from "../features/auth/authSlice";
+import { storedUsers } from "../features/user/userSlice";
+import { acceptFriendRequest, declineFriendRequest } from "../services/userApi";
 
 const NotificationCard = ({ user }) => {
   const userData = useSelector(storedUser);
@@ -30,7 +30,7 @@ const NotificationCard = ({ user }) => {
       );
       dispatch(setCurrentUser(updateUserState));
     } catch (error) {
-      console.log('error: ', error);
+      console.log("error: ", error);
     }
     navigate(`/${user._id}`);
   };
@@ -52,21 +52,23 @@ const NotificationCard = ({ user }) => {
       };
       dispatch(setCurrentUser(updateUserState));
     } catch (error) {
-      console.log('error', error);
+      console.log("error", error);
     }
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <p>
         <Link to={`/${user._id}`}>{`${user.name}`}</Link> wants to connect!
       </p>
-      <button className='buttons' onClick={handleAccept}>
-        Accept
-      </button>
-      <button className='buttons' onClick={handleDecline}>
-        Decline
-      </button>
+      <div>
+        <button className="buttons" onClick={handleAccept}>
+          Accept
+        </button>
+        <button className="buttons" onClick={handleDecline}>
+          Decline
+        </button>
+      </div>
     </div>
   );
 };
